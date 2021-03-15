@@ -89,15 +89,15 @@
 
 #### IPv4
 
-| Management Interface | description | VRF | IP Address | Gateway |
-| -------------------- | ----------- | --- | ---------- | ------- |
-| Management1 | oob_management | MGMT | 192.168.200.109/24 | 192.168.200.5 |
+| Management Interface | description | Type | VRF | IP Address | Gateway |
+| -------------------- | ----------- | ---- | --- | ---------- | ------- |
+| Management1 | oob_management | oob | MGMT | 192.168.200.109/24 | 192.168.200.5 |
 
 #### IPv6
 
-| Management Interface | description | VRF | IPv6 Address | IPv6 Gateway |
-| -------------------- | ----------- | --- | ------------ | ------------ |
-| Management1 | oob_management | MGMT | -  | - |
+| Management Interface | description | Type | VRF | IPv6 Address | IPv6 Gateway |
+| -------------------- | ----------- | ---- | --- | ------------ | ------------ |
+| Management1 | oob_management | oob | MGMT | -  | - |
 
 ### Management Interfaces Device Configuration
 
@@ -1436,7 +1436,9 @@ router bgp 65103
    vrf Tenant_A_WAN_Zone
       rd 192.168.255.9:14
       route-target import evpn 14:14
+      route-target import evpn 65000:456
       route-target export evpn 14:14
+      route-target export evpn 65000:789
       router-id 192.168.255.9
       neighbor 10.255.251.6 peer group MLAG-IPv4-UNDERLAY-PEER
       redistribute connected

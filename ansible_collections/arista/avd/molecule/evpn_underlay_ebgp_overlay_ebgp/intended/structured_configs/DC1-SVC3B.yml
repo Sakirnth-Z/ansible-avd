@@ -592,6 +592,7 @@ management_interfaces:
     vrf: MGMT
     ip_address: 192.168.200.109/24
     gateway: 192.168.200.5
+    type: oob
 vlan_interfaces:
   Vlan4093:
     description: MLAG_PEER_L3_PEERING
@@ -1138,9 +1139,11 @@ router_bgp:
         import:
           evpn:
           - '14:14'
+          - 65000:456
         export:
           evpn:
           - '14:14'
+          - 65000:789
       neighbors:
         10.255.251.6:
           peer_group: MLAG-IPv4-UNDERLAY-PEER
